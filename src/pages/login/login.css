@@ -1,0 +1,14 @@
+.login-wrapper {
+  position: relative;
+  background-repeat: no-repeat;
+}
+.login-box {
+  width: 20vw;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  position: absolute;
+  top: 50vh;
+  left: 80vw;
+  transform: translate(-50%, -50%);
+}
