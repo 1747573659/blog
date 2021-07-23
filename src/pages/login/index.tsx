@@ -14,13 +14,15 @@ const Login: FC = () => {
   // 声明一个 backGroundImage 的state变量
   const [backGroundImage, setBackGroundImage] = useState(backgroundList[1])
   let index = 1
-  let backgroundTimer
   useEffect(() => {
-    // setInterval(() => {
-    //   index < 2 ? index++ : index = 0
-    //   setBackGroundImage(backgroundList[index])
-    // }, 1000)
-  })
+    let timer = setInterval(() => {
+      index < 2 ? index++ : index = 0
+      setBackGroundImage(backgroundList[index])
+    }, 5000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, [index])
 
   const wrapperStyle = {
     width: "100vw",
