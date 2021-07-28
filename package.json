@@ -60,6 +60,7 @@
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.4",
     "react-refresh": "^0.8.3",
+    "react-router-dom": "^5.2.0",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^10.0.5",
@@ -99,6 +100,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.1.8",
     "redux-devtools": "^3.7.0"
   },
   "jest": {
