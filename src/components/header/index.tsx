@@ -1,36 +1,49 @@
+import React, { Children } from 'react'
+
 import { useState } from 'react'
 
 import { Menu } from 'antd';
-import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
+
+import { menuList } from './header'
 
 export default function Header() {
   const { SubMenu } = Menu;
-  const [current, setCurrent] = useState('mail')
+  const [current, setCurrent] = useState('idnex')
 
-  const handleClick = () => {}
+  const [skinTitle, setSkinTitle] = useState('换肤')
+
+  const skinList = menuList.filter(menu => menu.key === 'skin' && menu.children)[0].children
+
+  const handleClick = ({ key }:any) => {
+    setCurrent(key)
+    setSkinTitle(getSkinTitle(key))
+  }
+
+  const getSkinTitle = (key:string):string => {
+    return ''
+  }
+  
   return (
     <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">
-      <Menu.Item key="mail">
-        Navigation One
-      </Menu.Item>
-      <Menu.Item key="app" disabled icon={<AppstoreOutlined />}>
-        Navigation Two
-      </Menu.Item>
-      <SubMenu key="SubMenu" icon={<SettingOutlined />} title="Navigation Three - Submenu">
-        <Menu.ItemGroup title="Item 1">
-          <Menu.Item key="setting:1">Option 1</Menu.Item>
-          <Menu.Item key="setting:2">Option 2</Menu.Item>
-        </Menu.ItemGroup>
-        <Menu.ItemGroup title="Item 2">
-          <Menu.Item key="setting:3">Option 3</Menu.Item>
-          <Menu.Item key="setting:4">Option 4</Menu.Item>
-        </Menu.ItemGroup>
-      </SubMenu>
-      <Menu.Item key="alipay">
-        <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-          Navigation Four - Link
-        </a>
-      </Menu.Item>
+      {
+        menuList.map(({key, title, children}) => (
+          children
+          ? <SubMenu key={key} title={key === 'skin'? skinTitle : title}>
+            {
+              children.map(({title, children}) => {
+                return (
+                  <Menu.ItemGroup title={title} key={title}>
+                    {
+                      children.map(({key, title}) => <Menu.Item key={key}>{title}</Menu.Item>)
+                    }
+                  </Menu.ItemGroup>
+                )
+              })
+            }
+          </SubMenu>
+          : <Menu.Item key={key}>{title}</Menu.Item>
+        ))
+      }
     </Menu>
   )
 }
