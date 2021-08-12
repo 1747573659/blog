@@ -1,11 +1,11 @@
 import Header from '../../components/header'
-import WuKong from '@/components/wukong';
+// import WuKong from '@/components/wukong';
 
 function Home() {
   return (
     <div className="App">
       <Header />
-      <WuKong />
+      {/* <WuKong /> */}
     </div>
   );
 }
