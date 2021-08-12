@@ -1,13 +1,16 @@
 import MyNavLink from '@/components/myNavLink'
 import Header from '../../components/header'
-import Home1 from '@/pages/home/home1'
-import Home2 from '@/pages/home/home2'
+import Home1 from '@/pages/Home/home1'
+import Home2 from '@/pages/Home/home2'
+import Count from '../../components/Count/Count'
+
 import { Route, Switch, Redirect } from 'react-router-dom'
 
 function Home() {
   return (
     <div className="App">
       <Header />
+      <Count/>
       <MyNavLink to="/home/home1">Home1</MyNavLink>
       <MyNavLink to="/home/home2">Home2</MyNavLink>
       <Switch>

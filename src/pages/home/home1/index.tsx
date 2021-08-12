@@ -1,4 +1,4 @@
-import HomeContent from './homeContent'
+import HomeContent from './homeContent/index'
 
 import { Link, Route } from 'react-router-dom'
 
@@ -9,13 +9,13 @@ export default function home1(props:any) {
     { id: 3, title: '333'}
   ]
 
-  const replaceShow = ({ id, title }) => {
+  const replaceShow = ({ id, title }:any) => {
     // props.history.replace(`/home/home1/homeContent/${id}/${title}`)
     // props.history.replace(`/home/home1/homeContent/?id=${id}&title=${title}`)
     props.history.replace(`/home/home1/homeContent`, {id, title})
   }
 
-  const pushShow = ({ id,title }) => {
+  const pushShow = ({ id,title }:any) => {
     // props.history.push(`/home/home1/homeContent/${id}/${title}`)
     // props.history.push(`/home/home1/homeContent/?id=${id}&title=${title}`)
     props.history.push(`/home/home1/homeContent`, {id, title})
