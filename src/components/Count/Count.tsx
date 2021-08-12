@@ -1,32 +1,47 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef } from "react"
+
+// 引入store
+import store from '../../redux/store';
+
+// 引入actionCreator
+import {
+  createIncrementAction,
+  createDecrementAction,
+  createIncrementAsyncAction
+} from '../../redux/count_action';
 
 const Count = function () {
   const selectedNumber = useRef<HTMLSelectElement>(null)
 
-  const [count, setCount] = useState(0)
+  useEffect(() => {
+    store.subscribe(() => {
+
+    })
+  },[])
 
   const increment = () => {
     const { value }:any = selectedNumber.current
-    setCount(count + Number(value))
+    // 通知redux加value
+    store.dispatch(createIncrementAction(value*1))
   }
   const decrement = () => {
     const { value }:any = selectedNumber.current
-    setCount(count - Number(value))
+    store.dispatch(createDecrementAction(value*1))
   }
   const incrementOfOdd = () => {
     const { value }:any = selectedNumber.current
-    let add = count + Number(value)
+    let add = store.getState() + Number(value)
     if (add%2) {
-      setCount(add)
+      store.dispatch(createIncrementAction(value*1))
     }
   }
   const incrementAsync = () => {
     const { value }:any = selectedNumber.current
-    setTimeout(() => setCount(count + Number(value)), 1000)
+    store.dispatch(createIncrementAsyncAction(value*1, 1000))
   }
   return (
     <div>
-      <h1>当前求和为：{count}</h1>
+      <h1>当前求和为：{store.getState()}</h1>
       <select ref={selectedNumber}>
         <option value={1}>1</option>
         <option value={2}>2</option>
