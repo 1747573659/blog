@@ -12,13 +12,13 @@ export default function home1(props:any) {
   const replaceShow = ({ id, title }:any) => {
     // props.history.replace(`/home/home1/homeContent/${id}/${title}`)
     // props.history.replace(`/home/home1/homeContent/?id=${id}&title=${title}`)
-    props.history.replace(`/home/home1/homeContent`, {id, title})
+    props.history.replace(`/study/home1/homeContent`, {id, title})
   }
 
   const pushShow = ({ id,title }:any) => {
     // props.history.push(`/home/home1/homeContent/${id}/${title}`)
     // props.history.push(`/home/home1/homeContent/?id=${id}&title=${title}`)
-    props.history.push(`/home/home1/homeContent`, {id, title})
+    props.history.push(`/study/home1/homeContent`, {id, title})
   }
 
   return (
@@ -33,7 +33,7 @@ export default function home1(props:any) {
                 {/* 向路由组件传递params参数 */}
                 {/* <Link to={`/home/home1/homeContent/${item.id}/${item.title}`}>{item.title}</Link> */}
                 {/* <Link to={`/home/home1/homeContent/?id=${item.id}&title=${item.title}`}>{item.title}</Link> */}
-                <Link replace={true} to={{pathname: "/home/home1/homeContent", state: { id, title }}}>{item.title}</Link>
+                <Link replace={true} to={{pathname: "/study/home1/homeContent", state: { id, title }}}>{item.title}</Link>
                 <button onClick={() => pushShow(item)}>push查看</button>
                 <button onClick={() => replaceShow(item)}>replace查看</button>
               </li>
@@ -44,7 +44,7 @@ export default function home1(props:any) {
       {/* 声明接受params参数 */}
       {/* <Route path="/home/home1/homeContent/:id/:title" component={HomeContent}/> */}
       {/* <Route path="/home/home1/homeContent" component={HomeContent}/> */}
-      <Route path="/home/home1/homeContent" component={HomeContent}/>
+      <Route path="/study/home1/homeContent" component={HomeContent}/>
     </div>
   )
 }

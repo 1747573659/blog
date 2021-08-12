@@ -25,7 +25,7 @@ export const menuList: Menu[] = [
   },
   {
     key: 'skin',
-    title: '换肤',
+    title: '风格主题',
     children: [
       {
         title: '英雄联盟',

@@ -4,11 +4,11 @@ interface Router {
 }
 const RouterList: Router[] = [
   {
-    component: () => import('../pages/home'),
+    component: () => import('../pages/Home'),
     path: '/home'
   },
   {
-    component: () => import('../pages/login'),
+    component: () => import('../pages/Login'),
     path: '/home'
   },
 ]

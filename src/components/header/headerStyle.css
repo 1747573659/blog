@@ -1,0 +1,11 @@
+.header-wraper {
+  width:  100vw;
+  height: 80px;
+  justify-content: center;
+  color: #666 !important;
+  font-size: 16px !important;
+  text-shadow: 0 0 1px rgb(0 0 0 / 10%);
+}
+.ant-menu-horizontal {
+  line-height: 80px !important;
+}
