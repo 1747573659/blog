@@ -1,13 +1,15 @@
-import Count from '../../components/Count/Count'
+import Count from '../../containers/Count'
 import MyNavLink from '@/components/myNavLink'
 import Home1 from '@/pages/Study/home1'
 import Home2 from '@/pages/Study/home2'
 import { Route, Switch, Redirect } from 'react-router-dom'
 
+import store from '../../redux/store'
+
 export default function Study() {
   return (
     <div>
-      <Count/>
+      <Count store={store}/>
       <MyNavLink to="/study/home1">Home1</MyNavLink>
       <MyNavLink to="/study/home2">Home2</MyNavLink>
       <Switch>
