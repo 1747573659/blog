@@ -6,17 +6,19 @@ const Count = function (props:any) {
   const increment = () => {
     const { value }:any = selectedNumber.current
     // 通知redux加value
-    props.add(value*1)
+    props.increment(value*1)
   }
   const decrement = () => {
     const { value }:any = selectedNumber.current
+    props.decrement(value*1)
   }
   const incrementOfOdd = () => {
     const { value }:any = selectedNumber.current
-
+    if (props.count % 2) props.increment(value*1)
   }
   const incrementAsync = () => {
     const { value }:any = selectedNumber.current
+    props.incrementAsync(value*1, 500)
   }
   return (
     <div>
