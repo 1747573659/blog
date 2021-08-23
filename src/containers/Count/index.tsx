@@ -1,19 +1,54 @@
-import CountUI from '../../components/Count/Count'
-
 import {connect} from 'react-redux'
 
 import {
-  createIncrementAction,
-  createDecrementAction,
-  createIncrementAsyncAction
+  increment,
+  decrement,
+  incrementAsync
 } from '../../redux/count_action'
 
-const mapStateToProps = (state:number) => ({ count:state })
+import { useRef } from "react"
 
-const mapDispatchToProps = (dispath:any) => ({ 
-  increment: (data:number) => dispath(createIncrementAction(data)),
-  decrement: (data:number) => dispath(createDecrementAction(data)),
-  incrementAsync: (data:number, time:number) => dispath(createIncrementAsyncAction(data, time))
-})
+const Count = (props:any) => {
+  const selectedNumber = useRef<HTMLSelectElement>(null)
 
-export default connect(mapStateToProps, mapDispatchToProps)(CountUI)
+  const increment = () => {
+    const { value }:any = selectedNumber.current
+    // 通知redux加value
+    props.increment(value*1)
+  }
+  const decrement = () => {
+    const { value }:any = selectedNumber.current
+    props.decrement(value*1)
+  }
+  const incrementOfOdd = () => {
+    const { value }:any = selectedNumber.current
+    if (props.count % 2) props.increment(value*1)
+  }
+  const incrementAsync = () => {
+    const { value }:any = selectedNumber.current
+    props.incrementAsync(value*1, 500)
+  }
+  return (
+    <div>
+      <h1>当前求和为：{props.count}</h1>
+      <select ref={selectedNumber}>
+        <option value={1}>1</option>
+        <option value={2}>2</option>
+        <option value={3}>3</option>
+      </select>&nbsp;
+      <button onClick={increment}>+</button>&nbsp;
+      <button onClick={decrement}>-</button>&nbsp;
+      <button onClick={incrementOfOdd}>当前求和为奇数再加</button>&nbsp;
+      <button onClick={incrementAsync}>异步加</button>&nbsp;
+    </div>
+  )
+}
+
+export default connect(
+  (state:number) => ({ count:state }),
+  {
+    increment,
+    decrement,
+    incrementAsync
+  }
+)(Count)
