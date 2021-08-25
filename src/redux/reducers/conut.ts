@@ -3,15 +3,15 @@
  * reducer会接受到两个函数，分别为：之前的状态preState和动作对象action
  */
 
- import {
+import {
   INCREMENT,
   DECREMENT,
-  Action
-} from './contant';
+  CountAction
+} from '../contant';
 
 
 const initState = 0
-const countReducer = (preState:number = initState, action:Action):number => {
+const countReducer = (preState:number = initState, action:CountAction):number => {
 
   const { type, data } = action
 

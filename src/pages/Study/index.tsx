@@ -1,4 +1,5 @@
 import Count from '../../containers/Count'
+import Person from '../../containers/Person'
 import MyNavLink from '@/components/myNavLink'
 import Home1 from '@/pages/Study/home1'
 import Home2 from '@/pages/Study/home2'
@@ -8,6 +9,7 @@ export default function Study() {
   return (
     <div>
       <Count/>
+      <Person/>
       <MyNavLink to="/study/home1">Home1</MyNavLink>
       <MyNavLink to="/study/home2">Home2</MyNavLink>
       <Switch>

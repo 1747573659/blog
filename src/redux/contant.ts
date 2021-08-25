@@ -4,7 +4,19 @@
 
 export const INCREMENT = 'increment'
 export const DECREMENT = 'decrement'
-export interface Action {
+export const ADD_PERSON = 'add_person'
+export interface CountAction {
   type: string,
   data: number
+}
+
+export interface Person {
+  age: string,
+  name: string,
+  id: string
+}
+
+export interface PersontAction {
+  type: string,
+  data: Person
 }

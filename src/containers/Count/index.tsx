@@ -4,7 +4,7 @@ import {
   increment,
   decrement,
   incrementAsync
-} from '../../redux/count_action'
+} from '../../redux/actions/count'
 
 import { useRef } from "react"
 
@@ -30,7 +30,9 @@ const Count = (props:any) => {
   }
   return (
     <div>
-      <h1>当前求和为：{props.count}</h1>
+      <h4>我是Count组件</h4>
+      <h5>Persons的长度: {props.state.personReducer.length}</h5>
+      <h1>当前求和为：{props.state.countReducer}</h1>
       <select ref={selectedNumber}>
         <option value={1}>1</option>
         <option value={2}>2</option>
@@ -45,7 +47,7 @@ const Count = (props:any) => {
 }
 
 export default connect(
-  (state:number) => ({ count:state }),
+  (state:any) => ({ state }),
   {
     increment,
     decrement,
